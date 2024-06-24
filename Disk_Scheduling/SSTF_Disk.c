@@ -27,6 +27,7 @@ int main()
     for (i = 0; i < n; i++)
     {
         min_distance = INT_MAX; // Initialize with a large value
+       // printf("min_distance is:%d\n",min_distance);
 
         // Find the closest request
         for (j = 0; j < n; j++)

@@ -39,6 +39,7 @@ int main()
         if (queue[i] < head)
         {
             left[i] = 1;
+
         }
         else
         {
@@ -47,6 +48,7 @@ int main()
         if (queue[i] > head)
         {
             right[i] = 1;
+
         }
         else
         {
