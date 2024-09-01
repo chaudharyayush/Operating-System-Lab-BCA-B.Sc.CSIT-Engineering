@@ -8,6 +8,11 @@ void *thread_function(void *arg)
 {
     // Entry section
 
+    
+    //This is a built-in GCC (GNU Compiler Collection) atomic function.
+    // It atomically sets the value of lock to 1 and returns the previous value of lock.
+    //If lock was 0 (indicating that the lock was free), the function sets it to 1 (indicating that the lock is now acquired by the current thread) and returns 0.
+    //If lock was already 1 (indicating that the lock was already acquired by another thread), the function leaves it as 1 and returns 1.
     while (__sync_lock_test_and_set(&lock, 1) == 1)
     {
         printf("Thread %d is waiting for the lock\n", *(int *)arg);

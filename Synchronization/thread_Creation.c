@@ -32,7 +32,8 @@ int main()
     printf("Thread Created\n");
 
     // Wait for the thread to finish
-    pthread_join(a_thread, NULL); // NULL -This is a pointer to a location where the exit status of the thread will be stored. If you do not need the exit status, you can pass NULL.
+    pthread_join(a_thread, NULL); //Waits for the thread1 to complete execution. The main function will block until thread1 finishes.
+    // NULL -This is a pointer to a location where the exit status of the thread will be stored. If you do not need the exit status, you can pass NULL.
     printf("Thread Joined\n");
 
     // Print a sequence of numbers from the main program

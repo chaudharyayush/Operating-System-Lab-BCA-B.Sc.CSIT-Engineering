@@ -11,7 +11,7 @@ int main() {
  pthread_t one, two;  
  pthread_create(&one, NULL, function1, NULL);  // create thread
  pthread_create(&two, NULL, function2, NULL);
- pthread_join(one, NULL);
+ pthread_join(one, NULL);//Waits for the thread_one to complete execution. The main function will block until thread1 finishes.
  pthread_join(two, NULL);
  printf("Thread joined\n");
  }

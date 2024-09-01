@@ -4,14 +4,14 @@
 void *fun1();
 void *fun2();
  int shared=1; //shared variable
- pthread_mutex_t l; //mutex lock
+ pthread_mutex_t l; //Declares a mutex lock named l. This will be used to ensure mutual exclusion, meaning only one thread can access the shared variable at a time.
  int main()
  {
- pthread_mutex_init(&l, NULL); //initializing mutex locks
+ pthread_mutex_init(&l, NULL); //Initializes the mutex l. The first argument is a pointer to the mutex, and the second argument is usually NULL, which means the default mutex attributes are used.
  pthread_t thread1, thread2;
  pthread_create(&thread1, NULL, fun1, NULL);
  pthread_create(&thread2, NULL, fun2, NULL);
- pthread_join(thread1, NULL);
+ pthread_join(thread1, NULL);//Waits for the thread1 to complete execution. The main function will block until thread1 finishes.
  pthread_join(thread2,NULL);
  printf("Final value of shared is %d\n",shared); //prints the last updated value of shared variable
  }
