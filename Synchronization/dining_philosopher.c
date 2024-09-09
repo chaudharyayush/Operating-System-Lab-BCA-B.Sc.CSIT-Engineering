@@ -4,21 +4,6 @@
 #include<semaphore.h>
 #include<unistd.h>
 sem_t chopstick[5];
-void * philos(void *);
-void eat(int);
-int main()
- {
-         int i,n[5];
-         pthread_t T[5];
-         for(i=0;i<5;i++)
-         sem_init(&chopstick[i],0,1);
-         for(i=0;i<5;i++){
-                 n[i]=i;
-                 pthread_create(&T[i],NULL,philos,(void *)&n[i]);
-                 }
-         for(i=0;i<5;i++)
-                 pthread_join(T[i],NULL);
- }
 void * philos(void * n)
  {
          int ph=*(int *)n;
@@ -29,7 +14,7 @@ void * philos(void * n)
          printf("Philosopher %d tries to pick the right chopstick\n",ph);
          sem_wait(&chopstick[(ph+1)%5]);
          printf("Philosopher %d picks the right chopstick\n",ph);
-         eat(ph);
+                printf("Philosopher %d begins to eat\n",ph);
          sleep(2);
          printf("Philosopher %d has finished eating\n",ph);
          sem_post(&chopstick[(ph+1)%5]);
@@ -37,7 +22,21 @@ void * philos(void * n)
          sem_post(&chopstick[ph]);
          printf("Philosopher %d leaves the left chopstick\n",ph);
  }
- void eat(int ph)
+ int main()
  {
-         printf("Philosopher %d begins to eat\n",ph);
+         int i,n[5];
+         pthread_t T[5];
+         for(i=0;i<5;i++){
+        //Initializes each semaphore in the chopstick array. 
+        //The second argument (0) means the semaphore is shared between threads, 
+        //and the third argument (1) sets the initial value of the semaphore (1 means the chopstick is available).
+         sem_init(&chopstick[i],0,1);
+         }
+         for(i=0;i<5;i++){
+                 n[i]=i;
+                 pthread_create(&T[i],NULL,philos,(void *)&n[i]);
+                 }
+         for(i=0;i<5;i++){
+                 pthread_join(T[i],NULL);
+         }
  }

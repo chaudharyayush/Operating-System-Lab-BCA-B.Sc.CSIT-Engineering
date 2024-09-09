@@ -3,7 +3,7 @@
 
 int main()
 {
-    int i, n, head, total = 0;
+    int i, n, head;
     int queue[20];
 
     printf("Enter the size of disk queue: ");
