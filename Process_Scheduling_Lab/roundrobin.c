@@ -7,8 +7,9 @@ int main()
     scanf("%d", &n);
     for (i = 0; i < n; i++) {
         printf("Enter the burst time of Process %d: ", i+1 );
-        scanf("%d", &bt[i]);
-        rem_bt[i]=bt[i];
+        scanf("%d", &bt[i]);//The burst time is stored in the bt array.
+
+        rem_bt[i]=bt[i];//The same burst time is copied into rem_bt to track the remaining burst time as the processes execute.
     }
     printf("Enter quantum time: ");
     scanf("%d", &qt);
@@ -17,6 +18,9 @@ int main()
         for(i=0, count=0; i<n; i++)
         {
             temp=qt;
+            //If a process has no remaining burst time (rem_bt[i] == 0), 
+            //it increments the count to track how many processes have finished 
+            //and skips the current process using continue.
             if(rem_bt[i]==0)
             {
                 count++;
@@ -25,6 +29,8 @@ int main()
             if(rem_bt[i]>qt){
             rem_bt[i] = rem_bt[i]-qt;}
             else
+            //If the remaining burst time is less than or equal to qt, 
+            //set temp to the remaining burst time and mark the process as completed by setting rem_bt[i] = 0.
             if(rem_bt[i]>=0){
                 temp = rem_bt[i];
                 rem_bt[i]=0;

@@ -3,8 +3,8 @@
 int main()
 {
     char buff[20];
-    read(0, buff, 10);  // read 10 bytes from standard input device(keyboard), store in buffer (buff)
-    write(1, buff, 10); // print 10 bytes from the buffer on the screen
+    read(0, buff, 10);  // 0 is the file descriptor for standard input (keyboard), read 10 bytes from standard input device(keyboard), store in buffer (buff)
+    write(1, buff, 10); // 1 is the file descriptor for standard output (screen), print 10 bytes from the buffer on the screen
 }
 
 // int n;

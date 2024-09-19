@@ -55,9 +55,9 @@ int main() {
                 printf("%d -> ", queue[i]);
 
                 seek_count += abs(head - queue[i]);
-                printf("%d \n", seek_count);
+               // printf("%d \n", seek_count);
                 head = queue[i];
-               printf("%d \n", head);
+               //printf("%d \n", head);
             }
         }
         printf("%d -> ", last_queue);
